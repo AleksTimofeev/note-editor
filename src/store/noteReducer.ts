@@ -6,7 +6,7 @@ const slice = createSlice({
   initialState: {
     noteData: {
       '001': [
-        {id: '001001', text: 'text 001001', tags: ['001', '002']},
+        {id: '001001', text: 'text #hello my #by name Aleks)))', tags: ['hello', 'by']},
         {id: '001002', text: 'text 001002', tags: ['002']},
         {id: '001003', text: 'text 001003', tags: ['001']}
       ],
@@ -35,7 +35,7 @@ type InitialStateType = {
   },
   tagsList: string[]
 }
-type NoteType = {
+export type NoteType = {
   id: string,
   text: string,
   tags: string[]

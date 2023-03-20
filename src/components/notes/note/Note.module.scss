@@ -1,0 +1,20 @@
+.wrapper {
+  width: 200px;
+  height: 200px;
+  display: flex;
+  flex-direction: column;
+  border: 1px solid black;
+  margin: 5px;
+  padding: 5px;
+
+  p{
+    margin-bottom: auto;
+  }
+  span {
+    margin: 0 10px;
+  }
+  .r {
+    background: red;
+    margin: 0;
+  }
+}
