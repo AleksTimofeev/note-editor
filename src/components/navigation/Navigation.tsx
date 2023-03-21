@@ -9,9 +9,9 @@ export const Navigation = () => {
 
   return (
     <div className={styles.wrapper}>
-      <NavLink to={'/all'}>all</NavLink>
+      <NavLink to={'/note'}>all</NavLink>
       {tagsList && tagsList.map(item => (
-        <NavLink to={`/${item}`} key={item}>{item}</NavLink>
+        <NavLink to={`/note/${item}`} key={item}>{item}</NavLink>
       ))}
 
     </div>
