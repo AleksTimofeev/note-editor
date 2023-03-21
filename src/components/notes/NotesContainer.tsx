@@ -10,14 +10,14 @@ export const NotesContainer = () => {
   const {tag} = params
   const tags = useAppSelector(state => state.notes.tagsList)
   const notes = useAppSelector(state => state.notes.noteData)
-  const notesForRender = []
-  if(tag === undefined){
-    tags.map(item => {
-      notesForRender.push(...notes[item])
-    })
-  }else if(tag && notes[tag]){
-    notesForRender.push(...notes[tag])
-  }
+  const notesForRender = notes.filter(item => item.tags.some(value => value === tag))
+  // if(tag === undefined){
+  //   tags.map(item => {
+  //     notesForRender.push(...notes[item])
+  //   })
+  // }else if(tag && notes[tag]){
+  //   notesForRender.push(...notes[tag])
+  // }
 
 
 
