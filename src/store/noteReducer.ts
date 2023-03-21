@@ -43,10 +43,15 @@ const slice = createSlice({
       })
       state.noteData = [...state.noteData, {id: uuid4(), text, tags}]
     },
+    removeTagForNote: (state, action: PayloadAction<{idNote: string, tag: string}>) => {
+      state.noteData = state.noteData.map(note => (
+        note.id === action.payload.idNote ? {...note, tags: note.tags.filter(tag => tag !== action.payload.tag)} : {...note}
+      ))
+    }
   }
 })
 
-export const {addTag, addNote, removeTag} = slice.actions
+export const {addTag, addNote, removeTag, removeTagForNote} = slice.actions
 export const noteReducer = slice.reducer
 
 

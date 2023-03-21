@@ -10,8 +10,20 @@
   p{
     margin-bottom: auto;
   }
-  span {
+  .tag {
     margin: 0 10px;
+
+    &:hover {
+      background: red;
+      cursor: pointer;
+    }
+    .removeTagIcon {
+      display: none;
+      background: red;
+    }
+    &:hover > .removeTagIcon {
+      display: inline;
+    }
   }
   .r {
     background: red;

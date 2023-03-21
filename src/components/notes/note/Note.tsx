@@ -1,6 +1,7 @@
 import React from 'react';
-import {NoteType} from "../../../store/noteReducer";
+import {NoteType, removeTagForNote} from "../../../store/noteReducer";
 import styles from './Note.module.scss'
+import {useAppDispatch} from "../../../store/store";
 
 type PropsType = {
   noteData: NoteType
@@ -8,8 +9,12 @@ type PropsType = {
 
 export const Note: React.FC<PropsType> = ({noteData}) => {
 
+  const dispatch = useAppDispatch()
   const newText = noteData.text.split(' ').map(item => item.charAt(0) === '#' ? item.substring(1) : item)
-  
+
+  const handleRemoveTag = (e: React.MouseEvent<HTMLElement>) => {
+    dispatch(removeTagForNote({idNote: noteData.id, tag: e.currentTarget.id}))
+  }
 
   return (
     <div className={styles.wrapper}>
@@ -19,7 +24,13 @@ export const Note: React.FC<PropsType> = ({noteData}) => {
       ))}</p>
       <div>
         {noteData.tags.map(item => (
-          <span key={item}>{item}</span>
+          <span
+            className={styles.tag}
+            id={item}
+            key={item}
+            onClick={handleRemoveTag}
+            title={'remove tag'}
+          >{item}<span className={styles.removeTagIcon}>X</span></span>
         ))}
       </div>
     </div>
