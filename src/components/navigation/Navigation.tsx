@@ -6,7 +6,7 @@ import {AddTag} from "../addTag/AddTag";
 
 export const Navigation = () => {
 
-  const tagsList = useAppSelector(state => Object.keys(state.notes.noteData))
+  const tagsList = useAppSelector(state => state.notes.tagsList)
 
   return (
     <div className={styles.wrapper}>

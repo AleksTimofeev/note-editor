@@ -8,19 +8,14 @@ export const NotesContainer = () => {
 
   const params = useParams<{tag: string}>()
   const {tag} = params
-  console.log(tag)
-  const location = useLocation()
-  console.log(location)
-  const activeTag = location.pathname.substring(1)
   const tags = useAppSelector(state => state.notes.tagsList)
   const notes = useAppSelector(state => state.notes.noteData)
   const notesForRender = []
   if(tag === undefined){
-    console.log(tag)
     tags.map(item => {
       notesForRender.push(...notes[item])
     })
-  }else if(tag){
+  }else if(tag && notes[tag]){
     notesForRender.push(...notes[tag])
   }
 

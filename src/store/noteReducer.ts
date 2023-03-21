@@ -1,4 +1,4 @@
-import {createSlice} from "@reduxjs/toolkit";
+import {createSlice, PayloadAction} from "@reduxjs/toolkit";
 import { v4 as uuid4 } from 'uuid'
 
 const slice = createSlice({
@@ -23,9 +23,15 @@ const slice = createSlice({
     },
     tagsList: ['001', '002', '003']
   }as InitialStateType,
-  reducers: {}
+  reducers: {
+    addTag :(state, action:PayloadAction<string>) => {
+      state.tagsList = [...state.tagsList, action.payload]
+      state.noteData = {...state.noteData, [action.payload]: []}
+    }
+  }
 })
 
+export const {addTag} = slice.actions
 export const noteReducer = slice.reducer
 
 

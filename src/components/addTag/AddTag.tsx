@@ -1,6 +1,10 @@
 import React, {useState} from 'react';
+import {useAppDispatch} from "../../store/store";
+import {addTag} from "../../store/noteReducer";
 
 export const AddTag = () => {
+
+  const dispatch = useAppDispatch()
 
   const [value, setValue] = useState('')
 
@@ -9,14 +13,17 @@ export const AddTag = () => {
   }
   const handleOnEnter = (e: React.KeyboardEvent<HTMLInputElement>) => {
     if(e.key === 'Enter'){
-      if(value.trim().length > 2)
-
+      if(value.trim().length > 2){
+        dispatch(addTag(value.trim()))
         setValue('')
+      }
     }
   }
   const handleAddTag = () => {
-
-    setValue('')
+    if(value.trim().length > 2){
+      dispatch(addTag(value.trim()))
+      setValue('')
+    }
   }
 
   return (
