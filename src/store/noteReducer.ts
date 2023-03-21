@@ -15,11 +15,17 @@ const slice = createSlice({
           {id: '003002', text: 'text 003 002', tags: ['002']},
           {id: '003003', text: 'text 003 003', tags: ['001', '002', '003']}
     ],
-    tagsList: ['001', '002', '003']
+    tagsList: ['001', '002', '003', 'hello', 'by']
   }as InitialStateType,
   reducers: {
     addTag :(state, action:PayloadAction<string>) => {
       state.tagsList = [...state.tagsList, action.payload]
+    },
+    removeTag: (state, action:PayloadAction<{tag: string}>) => {
+      state.tagsList = state.tagsList.filter(tag => tag !== action.payload.tag)
+      state.noteData = state.noteData.map(note => (
+        {...note, tags: note.tags.filter(tag => tag !== action.payload.tag)}
+      ))
     },
     addNote: (state, action:PayloadAction<string>) => {
       const text = action.payload
@@ -36,11 +42,11 @@ const slice = createSlice({
         }
       })
       state.noteData = [...state.noteData, {id: uuid4(), text, tags}]
-    }
+    },
   }
 })
 
-export const {addTag, addNote} = slice.actions
+export const {addTag, addNote, removeTag} = slice.actions
 export const noteReducer = slice.reducer
 
 

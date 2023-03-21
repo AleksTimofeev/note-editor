@@ -8,3 +8,15 @@
 
   font-size: 24px;
 }
+.link {
+
+  display: flex;
+
+  .tagRemove {
+    display: none;
+  }
+
+  &:hover > .tagRemove {
+    display: block;
+  }
+}
