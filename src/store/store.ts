@@ -1,11 +1,13 @@
 import {TypedUseSelectorHook, useDispatch, useSelector} from "react-redux";
 import {configureStore} from "@reduxjs/toolkit";
 import {noteReducer} from "./noteReducer";
+import {appReducer} from "./appReducer";
 
 
 export const store = configureStore({
   reducer: {
-    notes: noteReducer
+    notes: noteReducer,
+    app: appReducer
   },
 })
 

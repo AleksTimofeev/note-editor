@@ -2,6 +2,7 @@ import React from 'react';
 import {NoteType, removeNote, removeTagForNote} from "../../../store/noteReducer";
 import styles from './Note.module.scss'
 import {useAppDispatch} from "../../../store/store";
+import {setShowModalEditNote} from "../../../store/appReducer";
 
 type PropsType = {
   noteData: NoteType
@@ -18,9 +19,15 @@ export const Note: React.FC<PropsType> = ({noteData}) => {
   const handleRemoveNote = () => {
     dispatch(removeNote({idNote: noteData.id}))
   }
+  const handleEditNote = () => {
+    dispatch(setShowModalEditNote({isShow: true, idNote: noteData.id}))
+  }
 
   return (
     <div className={styles.wrapper}>
+      <button
+        onClick={handleEditNote}
+      >edit</button>
       <button
         className={styles.removeNoteIcon}
         onClick={handleRemoveNote}

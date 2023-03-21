@@ -30,6 +30,24 @@ const slice = createSlice({
     addNote: (state, action:PayloadAction<string>) => {
       const text = action.payload
       const tags: string[] = []
+      const newText = text.split(' ').map(item => {
+        if(item.charAt(0) === '#'){
+          tags.push(item.substring(1))
+          if(!state.tagsList.find((tag) => tag === item.substring(1))){
+            state.tagsList = [...state.tagsList, item.substring(1)]
+          }
+          return item.substring(1)
+        }else{
+          return item
+        }
+      }).join(' ')
+      state.noteData = [...state.noteData, {id: uuid4(), text: newText, tags}]
+    },
+    updateNote: (state, action: PayloadAction<{idNote: string, text: string}>) => {
+      const {text, idNote} = action.payload
+      const tags: string[] = []
+      // const updatingNote = state.noteData.find(note => note.id === idNote)
+
       text.split(' ').map(item => {
         if(item.charAt(0) === '#'){
           tags.push(item.substring(1))
@@ -41,7 +59,9 @@ const slice = createSlice({
           return item
         }
       })
-      state.noteData = [...state.noteData, {id: uuid4(), text, tags}]
+
+      state.noteData = state.noteData.map(note => note.id === idNote ? {...note, text, tags} : note)
+
     },
     removeTagForNote: (state, action: PayloadAction<{idNote: string, tag: string}>) => {
       state.noteData = state.noteData.map(note => (
@@ -54,7 +74,7 @@ const slice = createSlice({
   }
 })
 
-export const {addTag, addNote, removeTag, removeTagForNote, removeNote} = slice.actions
+export const {addTag, addNote, removeTag, removeTagForNote, removeNote, updateNote} = slice.actions
 export const noteReducer = slice.reducer
 
 

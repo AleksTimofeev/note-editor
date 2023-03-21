@@ -5,6 +5,7 @@ import {Note} from "./note/Note";
 import styles from './NotesContainer.module.scss'
 import {AddNote} from "./addNote/AddNote";
 import {NoteType} from "../../store/noteReducer";
+import {ModalEditNote} from "../modalEditNote/ModalEditNote";
 
 export const NotesContainer = () => {
 
@@ -21,6 +22,7 @@ export const NotesContainer = () => {
 
   return (
     <div className={styles.wrapper}>
+      <ModalEditNote />
       <AddNote />
       {notesForRender && notesForRender.map(item => (
         <Note key={item.id} noteData={item} />
