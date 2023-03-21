@@ -12,7 +12,7 @@ function App() {
     <div className={styles.appWrapper}>
       <Navigation />
       <Routes>
-        <Route path={'/'} element={<Navigate to={'/note'} />} />
+        <Route path={'/'} element={<Navigate to={'/note/all'} />} />
         <Route path={'/note'} element={<NotesContainer />}>
           <Route path={'/note/:tag'} element={<NotesContainer />} />
         </Route>

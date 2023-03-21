@@ -16,7 +16,7 @@ const slice = createSlice({
           {id: '003003', text: 'text 003 003', tags: ['001', '002', '003']}
     ],
     tagsList: ['001', '002', '003', 'hello', 'by']
-  }as InitialStateType,
+  }as NotesInitialStateType,
   reducers: {
     addTag :(state, action:PayloadAction<string>) => {
       state.tagsList = [...state.tagsList, action.payload]
@@ -77,7 +77,7 @@ export const {addTag, addNote, removeTag, removeTagForNote, removeNote, updateNo
 export const noteReducer = slice.reducer
 
 
-type InitialStateType = {
+export type NotesInitialStateType = {
   noteData: NoteType[]
   tagsList: string[]
 }

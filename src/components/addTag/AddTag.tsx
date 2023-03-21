@@ -1,6 +1,7 @@
 import React, {useState} from 'react';
 import {useAppDispatch} from "../../store/store";
 import {addTag} from "../../store/noteReducer";
+import styles from './AddTag.module.scss'
 
 export const AddTag = () => {
 
@@ -27,15 +28,17 @@ export const AddTag = () => {
   }
 
   return (
-    <div>
+    <div className={styles.wrapper}>
       <input
         type="text"
         placeholder={'add tag'}
         value={value}
         onChange={handleChange}
         onKeyPress={handleOnEnter}
+        className={styles.inputAddTag}
       />
       <button
+        className={styles.btnAddTag}
         onClick={handleAddTag}
       >add tag</button>
     </div>

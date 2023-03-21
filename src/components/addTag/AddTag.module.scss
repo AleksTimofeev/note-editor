@@ -1,0 +1,18 @@
+.wrapper {
+
+  .inputAddTag {
+    padding: 5px 10px;
+    background: #c2e6f4;
+    border: none;
+
+    &:focus-visible {
+      border: none;
+      outline: none;
+      border-bottom: 1px solid black;
+      //background: #c2e6f4;
+    }
+  }
+  .btnAddTag {
+
+  }
+}

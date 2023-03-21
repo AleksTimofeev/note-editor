@@ -25,18 +25,22 @@ export const Note: React.FC<PropsType> = ({noteData}) => {
 
   return (
     <div className={styles.wrapper}>
-      <button
-        onClick={handleEditNote}
-      >edit</button>
-      <button
-        className={styles.removeNoteIcon}
-        onClick={handleRemoveNote}
-      >X</button>
-      <h6>{noteData.id}</h6>
+      <div className={styles.header}>
+        <button
+          className={styles.editNoteButton}
+          onClick={handleEditNote}
+        >edit
+        </button>
+        <button
+          className={styles.removeNoteIcon}
+          onClick={handleRemoveNote}
+        >X
+        </button>
+      </div>
       <p>{newText && newText.map(item => (
-        noteData.tags.some((value) => value === item) ? <span className={styles.r}>{item+' '}</span> : `${item} `
+        noteData.tags.some((value) => value === item) ? <span className={styles.textTag}>{item + ' '}</span> : `${item} `
       ))}</p>
-      <div>
+      <div className={styles.tags}>
         {noteData.tags.map(item => (
           <span
             className={styles.tag}
@@ -44,7 +48,7 @@ export const Note: React.FC<PropsType> = ({noteData}) => {
             key={item}
             onClick={handleRemoveTag}
             title={'remove tag'}
-          >{item}<span className={styles.removeTagIcon}>X</span></span>
+          >{item}</span>
         ))}
       </div>
     </div>

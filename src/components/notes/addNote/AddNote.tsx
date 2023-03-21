@@ -21,16 +21,9 @@ export const AddNote = () => {
   }
   return (
     <div className={styles.wrapper}>
-      {/*<input*/}
-      {/*  type="text"*/}
-      {/*  placeholder={'add note'}*/}
-      {/*  value={value}*/}
-      {/*  onChange={handleChange}*/}
-      {/*/>*/}
-      {/*<button onClick={handleAddNote}>add</button>*/}
       <button
         onClick={handleShowModal}
-      >open modal</button>
+      >add note</button>
     </div>
   );
 }

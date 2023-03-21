@@ -1,22 +1,39 @@
 .wrapper {
-  min-width: 30%;
+  min-width: 270px;
   width: 30%;
   display: flex;
   flex-direction: column;
   padding: 20px 10px 0 20px;
-  background: cadetblue;
-
+  background: #d2f2ff;
   font-size: 24px;
 }
+
 .link {
 
   display: flex;
+  justify-content: space-between;
+  padding: 5px 10px;
+  margin-bottom: 10px;
+  text-decoration: none;
+  color: black;
 
   .tagRemove {
     display: none;
   }
 
+  &:hover {
+    background: #d0dcff;
+  }
+
   &:hover > .tagRemove {
     display: block;
+    width: 26px;
+    height: 25px;
+    border: none;
+    border-radius: 50%;
+    background: #ffc9c9;
   }
+}
+.activeLink {
+  background: #b8caff;
 }

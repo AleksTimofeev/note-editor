@@ -21,12 +21,14 @@ export const ModalEditNote = () => {
     setValue(e.currentTarget.value)
   }
   const handleUpdateNote = () => {
-    if(value && idNote){
+    if (value && idNote) {
       dispatch(updateNote({idNote, text: value}))
+      setValue('')
+      dispatch(setShowModalEditNote({isShow: false, idNote: null}))
     }
   }
   const handleAddNote = () => {
-    if(value){
+    if (value) {
       dispatch(addNote(value))
       setValue('')
       dispatch(setShowModalEditNote({isShow: false, idNote: null}))
@@ -40,19 +42,28 @@ export const ModalEditNote = () => {
   return (
     <>
       {isShow && <div className={styles.wrapper}>
-        <button
-          onClick={handleClose}
-        >close</button>
         <textarea
           value={value}
           onChange={handleChange}
         />
+        {
+          idNote ?
+            <button
+              className={styles.btnSave}
+              onClick={handleUpdateNote}
+            >save
+            </button>
+            :
+            <button
+              className={styles.btnSave}
+              onClick={handleAddNote}
+            >add note</button>
+        }
         <button
-          onClick={handleUpdateNote}
-        >save</button>
-        <button
-          onClick={handleAddNote}
-        >add note</button>
+          className={styles.btnClose}
+          onClick={handleClose}
+        >close
+        </button>
       </div>}
     </>
 

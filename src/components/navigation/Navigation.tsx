@@ -14,12 +14,20 @@ export const Navigation = () => {
     dispatch(removeTag({tag: e.currentTarget.id}))
   }
 
+  const activeLinkStyle = (isActive: boolean) => {
+    return `${isActive ? styles.activeLink : ''} ${styles.link}`
+  }
+
   return (
     <div className={styles.wrapper}>
       <AddTag />
-      <NavLink to={'/note'}>all</NavLink>
+      <NavLink to={'/note/all'} className={({isActive}) => activeLinkStyle(isActive)}>all</NavLink>
       {tagsList && tagsList.map(item => (
-        <NavLink to={`/note/${item}`} key={item} className={styles.link}>
+        <NavLink
+          to={`/note/${item}`}
+          key={item}
+          className={({isActive}) => activeLinkStyle(isActive)}
+        >
           <>
             {item}
           </>
