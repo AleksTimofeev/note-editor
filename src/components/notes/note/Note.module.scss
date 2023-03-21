@@ -1,4 +1,5 @@
 .wrapper {
+  position: relative;
   width: 200px;
   height: 200px;
   display: flex;
@@ -6,6 +7,12 @@
   border: 1px solid black;
   margin: 5px;
   padding: 5px;
+
+  .removeNoteIcon {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+  }
 
   p{
     margin-bottom: auto;

@@ -1,5 +1,5 @@
 import React from 'react';
-import {NoteType, removeTagForNote} from "../../../store/noteReducer";
+import {NoteType, removeNote, removeTagForNote} from "../../../store/noteReducer";
 import styles from './Note.module.scss'
 import {useAppDispatch} from "../../../store/store";
 
@@ -15,9 +15,16 @@ export const Note: React.FC<PropsType> = ({noteData}) => {
   const handleRemoveTag = (e: React.MouseEvent<HTMLElement>) => {
     dispatch(removeTagForNote({idNote: noteData.id, tag: e.currentTarget.id}))
   }
+  const handleRemoveNote = () => {
+    dispatch(removeNote({idNote: noteData.id}))
+  }
 
   return (
     <div className={styles.wrapper}>
+      <button
+        className={styles.removeNoteIcon}
+        onClick={handleRemoveNote}
+      >X</button>
       <h6>{noteData.id}</h6>
       <p>{newText && newText.map(item => (
         noteData.tags.some((value) => value === item) ? <span className={styles.r}>{item+' '}</span> : `${item} `
