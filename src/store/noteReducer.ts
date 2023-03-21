@@ -20,18 +20,31 @@ const slice = createSlice({
   reducers: {
     addTag :(state, action:PayloadAction<string>) => {
       state.tagsList = [...state.tagsList, action.payload]
+    },
+    addNote: (state, action:PayloadAction<string>) => {
+      const text = action.payload
+      const tags: string[] = []
+      text.split(' ').map(item => {
+        if(item.charAt(0) === '#'){
+          tags.push(item.substring(1))
+          if(!state.tagsList.find((tag) => tag === item.substring(1))){
+            state.tagsList = [...state.tagsList, item.substring(1)]
+          }
+          return item.substring(1)
+        }else{
+          return item
+        }
+      })
+      state.noteData = [...state.noteData, {id: uuid4(), text, tags}]
     }
   }
 })
 
-export const {addTag} = slice.actions
+export const {addTag, addNote} = slice.actions
 export const noteReducer = slice.reducer
 
 
 type InitialStateType = {
-  // noteData: {
-  //   [key:string]: NoteType[]
-  // },
   noteData: NoteType[]
   tagsList: string[]
 }
