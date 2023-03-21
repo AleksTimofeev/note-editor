@@ -3,6 +3,7 @@ import {useLocation, useParams} from "react-router-dom";
 import {useAppSelector} from "../../store/store";
 import {Note} from "./note/Note";
 import styles from './NotesContainer.module.scss'
+import {AddNote} from "./addNote/AddNote";
 
 export const NotesContainer = () => {
 
@@ -24,6 +25,7 @@ export const NotesContainer = () => {
 
   return (
     <div className={styles.wrapper}>
+      <AddNote />
       {notesForRender && notesForRender.map(item => (
         <Note key={item.id} noteData={item} />
       ))}

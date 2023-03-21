@@ -9,11 +9,7 @@ type PropsType = {
 export const Note: React.FC<PropsType> = ({noteData}) => {
 
   const newText = noteData.text.split(' ').map(item => item.charAt(0) === '#' ? item.substring(1) : item)
-
-  console.log(newText)
-  // console.log(newText.map(item => (
-  //   noteData.tags.some((value) => value === item) ? `${<h4>{item}</h4> }` : `${item }`
-  // )))
+  
 
   return (
     <div className={styles.wrapper}>
