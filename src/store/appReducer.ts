@@ -4,7 +4,7 @@ import {createSlice, PayloadAction} from "@reduxjs/toolkit";
 const slice = createSlice({
   name: 'appReducer',
   initialState: {
-    modalEditNoteIsShow: true,
+    modalEditNoteIsShow: false,
     editNoteId: null
   } as InitialStateType,
   reducers: {

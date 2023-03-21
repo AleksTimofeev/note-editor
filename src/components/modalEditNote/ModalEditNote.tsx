@@ -12,8 +12,7 @@ export const ModalEditNote = () => {
   const editNoteData = useAppSelector(state => state.notes.noteData.find(note => note.id === idNote))
   const editText = editNoteData?.text.split(' ').map(
     item => editNoteData.tags.some(value => value === item) ? `#${item}` : item).join(' ')
-  // debugger
-  const [value, setValue] = useState(editText)
+  const [value, setValue] = useState(idNote ? editText : '')
 
   const handleClose = () => {
     dispatch(setShowModalEditNote({isShow: false, idNote: null}))
@@ -24,6 +23,13 @@ export const ModalEditNote = () => {
   const handleUpdateNote = () => {
     if(value && idNote){
       dispatch(updateNote({idNote, text: value}))
+    }
+  }
+  const handleAddNote = () => {
+    if(value){
+      dispatch(addNote(value))
+      setValue('')
+      dispatch(setShowModalEditNote({isShow: false, idNote: null}))
     }
   }
 
@@ -44,6 +50,9 @@ export const ModalEditNote = () => {
         <button
           onClick={handleUpdateNote}
         >save</button>
+        <button
+          onClick={handleAddNote}
+        >add note</button>
       </div>}
     </>
 

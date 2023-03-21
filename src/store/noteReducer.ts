@@ -46,7 +46,6 @@ const slice = createSlice({
     updateNote: (state, action: PayloadAction<{idNote: string, text: string}>) => {
       const {text, idNote} = action.payload
       const tags: string[] = []
-      // const updatingNote = state.noteData.find(note => note.id === idNote)
 
       text.split(' ').map(item => {
         if(item.charAt(0) === '#'){
