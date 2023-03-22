@@ -1,4 +1,6 @@
 .wrapper {
+  display: flex;
+  margin-bottom: 15px;
 
   .inputAddTag {
     padding: 5px 10px;
@@ -9,10 +11,6 @@
       border: none;
       outline: none;
       border-bottom: 1px solid black;
-      //background: #c2e6f4;
     }
-  }
-  .btnAddTag {
-
   }
 }

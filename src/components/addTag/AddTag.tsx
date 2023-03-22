@@ -15,14 +15,14 @@ export const AddTag = () => {
   const handleOnEnter = (e: React.KeyboardEvent<HTMLInputElement>) => {
     if(e.key === 'Enter'){
       if(value.trim().length > 2){
-        dispatch(addTag(value.trim()))
+        dispatch(addTag({tag: value.trim()}))
         setValue('')
       }
     }
   }
   const handleAddTag = () => {
     if(value.trim().length > 2){
-      dispatch(addTag(value.trim()))
+      dispatch(addTag({tag: value.trim()}))
       setValue('')
     }
   }

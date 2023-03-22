@@ -7,11 +7,13 @@ import {addNote, updateNote} from "../../store/noteReducer";
 export const ModalEditNote = () => {
 
   const dispatch = useAppDispatch()
+
   const isShow = useAppSelector(state => state.app.modalEditNoteIsShow)
   const idNote = useAppSelector(state => state.app.editNoteId)
   const editNoteData = useAppSelector(state => state.notes.noteData.find(note => note.id === idNote))
   const editText = editNoteData?.text.split(' ').map(
     item => editNoteData.tags.some(value => value === item) ? `#${item}` : item).join(' ')
+
   const [value, setValue] = useState(idNote ? editText : '')
 
   const handleClose = () => {
@@ -29,7 +31,7 @@ export const ModalEditNote = () => {
   }
   const handleAddNote = () => {
     if (value) {
-      dispatch(addNote(value))
+      dispatch(addNote({text: value}))
       setValue('')
       dispatch(setShowModalEditNote({isShow: false, idNote: null}))
     }

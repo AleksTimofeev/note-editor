@@ -10,7 +10,7 @@ export const Navigation = () => {
   const dispatch = useAppDispatch()
   const tagsList = useAppSelector(state => state.notes.tagsList)
 
-  const handleRemoveTag = (e:  React.MouseEvent<HTMLButtonElement>) => {
+  const handleRemoveTag = (e: React.MouseEvent<HTMLButtonElement>) => {
     dispatch(removeTag({tag: e.currentTarget.id}))
   }
 
@@ -20,7 +20,7 @@ export const Navigation = () => {
 
   return (
     <div className={styles.wrapper}>
-      <AddTag />
+      <AddTag/>
       <NavLink to={'/note/all'} className={({isActive}) => activeLinkStyle(isActive)}>all</NavLink>
       {tagsList && tagsList.map(item => (
         <NavLink
@@ -28,14 +28,13 @@ export const Navigation = () => {
           key={item}
           className={({isActive}) => activeLinkStyle(isActive)}
         >
-          <>
-            {item}
-          </>
+          {item}
           <button
             id={item}
             className={styles.tagRemove}
             onClick={handleRemoveTag}
-          >X</button>
+          >X
+          </button>
         </NavLink>
       ))}
 

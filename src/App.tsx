@@ -5,9 +5,6 @@ import {Navigation} from "./components/navigation/Navigation";
 import {NotesContainer} from "./components/notes/NotesContainer";
 
 function App() {
-
-
-
   return (
     <div className={styles.appWrapper}>
       <Navigation />
